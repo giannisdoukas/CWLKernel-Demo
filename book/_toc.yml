@@ -1,6 +1,10 @@
-file: Introduction
+file: Before Start
 sections:
+- file: Introduction
 - file: First Example
 - file: Essential Input Parameters
 - file: Returning Output Files
 - file: Staging Input Files
+- file: Capturing Standard Output
+- file: Parameter References
+- file: zbib

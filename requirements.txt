@@ -12,3 +12,4 @@ requests>=2.23.0
 pygtrie>=2.3.3
 pydot>=1.4.1
 jupyter-book
+sphinxcontrib-bibtex
