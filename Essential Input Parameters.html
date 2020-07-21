@@ -1,0 +1,406 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Essential Input Parameters &#8212; CWL User Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Returning Output Files" href="Returning Output Files.html" />
+    <link rel="prev" title="First Example" href="First Example.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">CWL User Guide</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Before Start.html">
+   Pre-tutorial
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="First Example.html">
+   First Example
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Essential Input Parameters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Returning Output Files.html">
+   Returning Output Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Staging Input Files.html">
+   Staging Input Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Capturing Standard Output.html">
+   Capturing Standard Output
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Parameter References.html">
+   Parameter References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zbib.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Essential Input Parameters.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="essential-input-parameters">
+<h1><a class="reference external" href="https://www.commonwl.org/user_guide/03-input/index.html">Essential Input Parameters</a><a class="headerlink" href="#essential-input-parameters" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-overview admonition">
+<p class="admonition-title">Overview</p>
+<p><strong>Teaching</strong>: 10 min</p>
+<p><strong>Exercises</strong>: 0 min</p>
+<p><strong>Questions</strong></p>
+<ul class="simple">
+<li><p>How can I pass arguments to a command?</p></li>
+<li><p>How is the order of parameters defined for a command?</p></li>
+</ul>
+<p><strong>Objectives</strong></p>
+<ul class="simple">
+<li><p>Learn how to describe and handle input parameters and files to a tool.</p></li>
+</ul>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">inputs</span></code> of a tool is a list of input parameters that control how to run the tool. Each parameter has an <code class="docutils literal notranslate"><span class="pre">id</span></code> for the name of parameter, and <code class="docutils literal notranslate"><span class="pre">type</span></code> describing what types of values are valid for that parameter.</p>
+<p>Available primitive types are <em>string, int, long, float, double</em>, and <em>null</em>; complex types are array and record; in addition there are special types <em>File</em>, <em>Directory</em> and <em>Any</em>.</p>
+<p>The following example demonstrates some input parameters with different types and appearing on the command line in different ways.</p>
+<p>First, create a tool called inp, containing the following:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the creation of the tool we will use the snippet magic command. With the snippet magic command we can build the document incremental by adding snippets.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">snippet</span> <span class="n">add</span>
+<span class="nb">id</span><span class="p">:</span> <span class="n">inp</span>
+<span class="n">cwlVersion</span><span class="p">:</span> <span class="n">v1</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">class</span><span class="p">:</span> <span class="n">CommandLineTool</span>
+<span class="n">baseCommand</span><span class="p">:</span> <span class="n">echo</span>
+<span class="n">outputs</span><span class="p">:</span> <span class="p">[]</span>
+<span class="n">inputs</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;id&quot;: &quot;inp&quot;, &quot;cwlVersion&quot;: &quot;v1.0&quot;, &quot;class&quot;: &quot;CommandLineTool&quot;, &quot;baseCommand&quot;: &quot;echo&quot;, &quot;outputs&quot;: [], &quot;inputs&quot;: null}
+</pre></div>
+</div>
+</div>
+</div>
+<p>The field <code class="docutils literal notranslate"><span class="pre">inputBinding</span></code> is optional and indicates whether and how the input parameter should be appear on the tool’s command line. If <code class="docutils literal notranslate"><span class="pre">inputBinding</span></code> is missing, the parameter does not appear on the command line. Let’s look at each example in detail.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">snippet</span> <span class="n">add</span>
+    <span class="n">example_flag</span><span class="p">:</span>
+      <span class="nb">type</span><span class="p">:</span> <span class="n">boolean</span>
+      <span class="n">inputBinding</span><span class="p">:</span>
+        <span class="n">position</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="n">prefix</span><span class="p">:</span> <span class="o">-</span><span class="n">f</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;id&quot;: &quot;inp&quot;, &quot;cwlVersion&quot;: &quot;v1.0&quot;, &quot;class&quot;: &quot;CommandLineTool&quot;, &quot;baseCommand&quot;: &quot;echo&quot;, &quot;outputs&quot;: [], &quot;inputs&quot;: {&quot;example_flag&quot;: {&quot;type&quot;: &quot;boolean&quot;, &quot;inputBinding&quot;: {&quot;position&quot;: 1, &quot;prefix&quot;: &quot;-f&quot;}}}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Boolean types are treated as a flag. If the input parameter “example_flag” is “true”, then <code class="docutils literal notranslate"><span class="pre">prefix</span></code> will be added to the command line. If false, no flag is added.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">snippet</span> <span class="n">add</span>
+    <span class="n">example_string</span><span class="p">:</span>
+      <span class="nb">type</span><span class="p">:</span> <span class="n">string</span>
+      <span class="n">inputBinding</span><span class="p">:</span>
+        <span class="n">position</span><span class="p">:</span> <span class="mi">3</span>
+        <span class="n">prefix</span><span class="p">:</span> <span class="o">--</span><span class="n">example</span><span class="o">-</span><span class="n">string</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;id&quot;: &quot;inp&quot;, &quot;cwlVersion&quot;: &quot;v1.0&quot;, &quot;class&quot;: &quot;CommandLineTool&quot;, &quot;baseCommand&quot;: &quot;echo&quot;, &quot;outputs&quot;: [], &quot;inputs&quot;: {&quot;example_flag&quot;: {&quot;type&quot;: &quot;boolean&quot;, &quot;inputBinding&quot;: {&quot;position&quot;: 1, &quot;prefix&quot;: &quot;-f&quot;}}, &quot;example_string&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;inputBinding&quot;: {&quot;position&quot;: 3, &quot;prefix&quot;: &quot;--example-string&quot;}}}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>String types appear on the command line as literal values. The <code class="docutils literal notranslate"><span class="pre">prefix</span></code> is optional, if provided, it appears as a separate argument on the command line before the parameter . In the example above, this is rendered as <code class="docutils literal notranslate"><span class="pre">--example-string</span></code> hello.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">snippet</span> <span class="n">add</span>
+    <span class="n">example_int</span><span class="p">:</span>
+      <span class="nb">type</span><span class="p">:</span> <span class="nb">int</span>
+      <span class="n">inputBinding</span><span class="p">:</span>
+        <span class="n">position</span><span class="p">:</span> <span class="mi">2</span>
+        <span class="n">prefix</span><span class="p">:</span> <span class="o">-</span><span class="n">i</span>
+        <span class="n">separate</span><span class="p">:</span> <span class="n">false</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;id&quot;: &quot;inp&quot;, &quot;cwlVersion&quot;: &quot;v1.0&quot;, &quot;class&quot;: &quot;CommandLineTool&quot;, &quot;baseCommand&quot;: &quot;echo&quot;, &quot;outputs&quot;: [], &quot;inputs&quot;: {&quot;example_flag&quot;: {&quot;type&quot;: &quot;boolean&quot;, &quot;inputBinding&quot;: {&quot;position&quot;: 1, &quot;prefix&quot;: &quot;-f&quot;}}, &quot;example_string&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;inputBinding&quot;: {&quot;position&quot;: 3, &quot;prefix&quot;: &quot;--example-string&quot;}}, &quot;example_int&quot;: {&quot;type&quot;: &quot;int&quot;, &quot;inputBinding&quot;: {&quot;position&quot;: 2, &quot;prefix&quot;: &quot;-i&quot;, &quot;separate&quot;: false}}}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Integer (and floating point) types appear on the command line with decimal text representation. When the option <code class="docutils literal notranslate"><span class="pre">separate</span></code> is false (the default value is true), the prefix and value are combined into a single argument. In the example above, this is rendered as -i42.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>% snippet add
+    example_file:
+      type: File?
+      inputBinding:
+        prefix: --file=
+        separate: false
+        position: 4
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;id&quot;: &quot;inp&quot;, &quot;cwlVersion&quot;: &quot;v1.0&quot;, &quot;class&quot;: &quot;CommandLineTool&quot;, &quot;baseCommand&quot;: &quot;echo&quot;, &quot;outputs&quot;: [], &quot;inputs&quot;: {&quot;example_flag&quot;: {&quot;type&quot;: &quot;boolean&quot;, &quot;inputBinding&quot;: {&quot;position&quot;: 1, &quot;prefix&quot;: &quot;-f&quot;}}, &quot;example_string&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;inputBinding&quot;: {&quot;position&quot;: 3, &quot;prefix&quot;: &quot;--example-string&quot;}}, &quot;example_int&quot;: {&quot;type&quot;: &quot;int&quot;, &quot;inputBinding&quot;: {&quot;position&quot;: 2, &quot;prefix&quot;: &quot;-i&quot;, &quot;separate&quot;: false}}, &quot;example_file&quot;: {&quot;type&quot;: &quot;File?&quot;, &quot;inputBinding&quot;: {&quot;prefix&quot;: &quot;--file=&quot;, &quot;separate&quot;: false, &quot;position&quot;: 4}}}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>File types appear on the command line as the path to the file. When the parameter type ends with a question mark <code class="docutils literal notranslate"><span class="pre">?</span></code> it indicates that the parameter is optional. In the example above, this is rendered as <code class="docutils literal notranslate"><span class="pre">--file=/tmp/random/path/whale.txt</span></code>. However, if the “example_file” parameter were not provided in the input, nothing would appear on the command line.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">snippet</span> <span class="n">build</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;id&quot;: &quot;inp&quot;, &quot;cwlVersion&quot;: &quot;v1.0&quot;, &quot;class&quot;: &quot;CommandLineTool&quot;, &quot;baseCommand&quot;: &quot;echo&quot;, &quot;outputs&quot;: [], &quot;inputs&quot;: {&quot;example_flag&quot;: {&quot;type&quot;: &quot;boolean&quot;, &quot;inputBinding&quot;: {&quot;position&quot;: 1, &quot;prefix&quot;: &quot;-f&quot;}}, &quot;example_string&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;inputBinding&quot;: {&quot;position&quot;: 3, &quot;prefix&quot;: &quot;--example-string&quot;}}, &quot;example_int&quot;: {&quot;type&quot;: &quot;int&quot;, &quot;inputBinding&quot;: {&quot;position&quot;: 2, &quot;prefix&quot;: &quot;-i&quot;, &quot;separate&quot;: false}}, &quot;example_file&quot;: {&quot;type&quot;: &quot;File?&quot;, &quot;inputBinding&quot;: {&quot;prefix&quot;: &quot;--file=&quot;, &quot;separate&quot;: false, &quot;position&quot;: 4}}}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Input files are read-only. If you wish to update an input file, you must <a class="reference internal" href="Staging Input Files.html"><span class="doc std std-doc">first copy it to the output directory</span></a>.</p>
+<p>The value of <code class="docutils literal notranslate"><span class="pre">position</span></code> is used to determine where parameter should appear on the command line. Positions are relative to one another, not absolute. As a result, positions do not have to be sequential, three parameters with positions 1, 3, 5 will result in the same command line as 1, 2, 3. More than one parameter can have the same position (ties are broken using the parameter name), and the position field itself is optional. The default position is 0.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">baseCommand</span></code> field will always appear in the final command line before the parameters.</p>
+<p>To execute the presented example we will create a dummy file. To do so we will use the <code class="docutils literal notranslate"><span class="pre">system</span></code> magic command to run the <code class="docutils literal notranslate"><span class="pre">touch</span></code> command.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">system</span> <span class="n">touch</span> <span class="n">whale</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">pwd</span>
+<span class="n">ls</span> <span class="o">-</span><span class="n">la</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>/private/tmp/CWLKERNEL_DATA/c7a74db4-1e49-46f3-aa52-668dffab83e3/runtime_data
+total 0
+drwxr-xr-x  3 dks  wheel   96 Jul 18 14:43 .
+drwxr-xr-x  7 dks  wheel  224 Jul 18 14:43 ..
+-rw-r--r--  1 dks  wheel    0 Jul 18 14:43 whale.txt
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we use the execute magic command to execute the tool we made.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">execute</span> <span class="n">inp</span>
+<span class="n">example_flag</span><span class="p">:</span> <span class="n">true</span>
+<span class="n">example_string</span><span class="p">:</span> <span class="n">hello</span>
+<span class="n">example_int</span><span class="p">:</span> <span class="mi">42</span>
+<span class="n">example_file</span><span class="p">:</span>
+  <span class="n">class</span><span class="p">:</span> <span class="n">File</span>
+  <span class="n">location</span><span class="p">:</span> <span class="n">whale</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Add data in memory
+</pre></div>
+</div>
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-key-points admonition">
+<p class="admonition-title">Key Points</p>
+<ul class="simple">
+<li><p>Inputs are described in the <code class="docutils literal notranslate"><span class="pre">inputs</span></code> section of a CWL description.</p></li>
+<li><p>Files should be described with <code class="docutils literal notranslate"><span class="pre">class:</span> <span class="pre">File</span></code>.</p></li>
+<li><p>You can use the <code class="docutils literal notranslate"><span class="pre">inputBinding</span></code> section to describe where and how an input appears in the command.</p></li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="First Example.html" title="previous page">First Example</a>
+    <a class='right-next' id="next-link" href="Returning Output Files.html" title="next page">Returning Output Files</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,368 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>First Example &#8212; CWL User Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Essential Input Parameters" href="Essential Input Parameters.html" />
+    <link rel="prev" title="Introduction" href="Introduction.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">CWL User Guide</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Before Start.html">
+   Pre-tutorial
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   First Example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Essential Input Parameters.html">
+   Essential Input Parameters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Returning Output Files.html">
+   Returning Output Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Staging Input Files.html">
+   Staging Input Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Capturing Standard Output.html">
+   Capturing Standard Output
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Parameter References.html">
+   Parameter References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zbib.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/First Example.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="first-example">
+<h1><a class="reference external" href="https://www.commonwl.org/user_guide/02-1st-example/index.html">First Example</a><a class="headerlink" href="#first-example" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-overview admonition">
+<p class="admonition-title">Overview</p>
+<p><strong>Teaching</strong>: 5 min</p>
+<p><strong>Exercises</strong>: 0 min</p>
+<p><strong>Questions</strong></p>
+<ul class="simple">
+<li><p>How do I write a CWL description of a simple command line tool?</p></li>
+</ul>
+<p><strong>Objectives</strong></p>
+<ul class="simple">
+<li><p>Learn the basic structure of a CWL description.</p></li>
+</ul>
+</div>
+<p>The simplest “hello world” program. This accepts one input parameter, writes a message to the terminal or job log, and produces no permanent output. CWL documents are written in <a class="reference external" href="https://www.json.org/">JSON</a> or <a class="reference external" href="https://yaml.org/">YAML</a>, or a mix of the two. We will use YAML throughout this guide. If you are not familiar with YAML, you may find it helpful to refer to <a class="reference external" href="https://www.commonwl.org/user_guide/yaml/">this quick tutorial for the subset of YAML used in CWL</a>.</p>
+<p>First, create a tool called 1st-tool.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">:</span> <span class="mi">1</span><span class="n">st</span><span class="o">-</span><span class="n">tool</span>
+<span class="n">cwlVersion</span><span class="p">:</span> <span class="n">v1</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">class</span><span class="p">:</span> <span class="n">CommandLineTool</span>
+<span class="n">baseCommand</span><span class="p">:</span> <span class="n">echo</span>
+<span class="n">inputs</span><span class="p">:</span>
+  <span class="n">message</span><span class="p">:</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">string</span>
+    <span class="n">inputBinding</span><span class="p">:</span>
+      <span class="n">position</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">outputs</span><span class="p">:</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>tool &#39;1st-tool&#39; registered
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we want to execute it. To do that we have to use the <code class="docutils literal notranslate"><span class="pre">execute</span></code> magic command and we define the input.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>% execute 1st-tool
+message: Hello World!
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Add data in memory
+</pre></div>
+</div>
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{}
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that the the tool was executed and returned an empty dictionary because our tool had no output.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The CWLKernel has a set of commands which add extra functionality. We just saw the execute magic command. If we want to see the documentation of the <code class="docutils literal notranslate"><span class="pre">execute</span></code> magic command we use the <code class="docutils literal notranslate"><span class="pre">magics</span></code> and we give as a argument the magic commands that we want.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">magics</span> <span class="n">execute</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Execute registered tool by id.
+% execute [tool-id]
+[yaml input ...]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If we give no arguments we get all the magic commands which are installed.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">magics</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>List of Available Magic commands
+	- compile
+	- data
+	- displayData
+	- displayDataCSV
+	- displayDataImage
+	- edit
+	- execute
+	- executeWithProvenance
+	- githubImport
+	- logs
+	- magics
+	- newWorkflow
+	- newWorkflowAddInput
+	- newWorkflowAddOutputSource
+	- newWorkflowAddStep
+	- newWorkflowAddStepIn
+	- newWorkflowBuild
+	- sampleCSV
+	- scatter
+	- snippet
+	- system
+	- view
+	- viewTool
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we will explain the CWL files by braking down its contents.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">cwlVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1.0</span>
+<span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CommandLineTool</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">cwlVersion</span></code> field indicates the version of the CWL spec used by the document. The <code class="docutils literal notranslate"><span class="pre">class</span></code> field indicates this document describes a command line tool.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">baseCommand</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">echo</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">baseCommand</span></code> provides the name of program that will actually run (<code class="docutils literal notranslate"><span class="pre">echo</span></code>). <code class="docutils literal notranslate"><span class="pre">echo</span></code> is a built-in program in the bash and C shells.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">inputs</span><span class="p">:</span>
+  <span class="nt">message</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">inputBinding</span><span class="p">:</span>
+      <span class="nt">position</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">inputs</span></code> section describes the inputs of the tool. This is a mapped list of input parameters (see the <a class="reference external" href="https://www.commonwl.org/user_guide/yaml/#maps">YAML Guide</a> for more about the format) and each parameter includes an identifier, a data type, and optionally an <code class="docutils literal notranslate"><span class="pre">inputBinding</span></code>. The <code class="docutils literal notranslate"><span class="pre">inputBinding</span></code> describes how this input parameter should appear on the command line. In this example, the <code class="docutils literal notranslate"><span class="pre">position</span></code> field indicates where it should appear on the command line.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">outputs</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+</pre></div>
+</div>
+<p>This tool has no formal output, so the <code class="docutils literal notranslate"><span class="pre">outputs</span></code> section is an empty list.</p>
+<div class="admonition-key-points admonition">
+<p class="admonition-title">Key Points</p>
+<p>CWL documents are written in YAML and/or JSON.</p>
+<p>The command called is specified with baseCommand.</p>
+<p>Each expected input is described in the inputs section.</p>
+<p>Input values are specified in a separate YAML file.</p>
+<p>The tool description and input files are provided as arguments to a CWL runner.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="Introduction.html" title="previous page">Introduction</a>
+    <a class='right-next' id="next-link" href="Essential Input Parameters.html" title="next page">Essential Input Parameters</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
