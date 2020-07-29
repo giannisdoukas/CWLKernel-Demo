@@ -9,4 +9,5 @@ sections:
 - file: Parameter References
 - file: RunningToolsInsideDocker
 - file: AdditionalArgumentsAndParameters
+- file: ArrayInputs
 - file: zbib
