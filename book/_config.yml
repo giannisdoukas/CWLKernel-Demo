@@ -1,1 +1,7 @@
 title: CWL User Guide [Work in progress...]
+
+repository:
+  "url": "https://github.com/giannisdoukas/CWLKernel-Demo"
+  "path_to_book": "book/"
+launch_buttons:
+  "binderhub_url": "https://mybinder.org"
