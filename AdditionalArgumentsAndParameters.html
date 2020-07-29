@@ -30,7 +30,7 @@
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Bibliography" href="zbib.html" />
+    <link rel="next" title="Array Inputs" href="ArrayInputs.html" />
     <link rel="prev" title="Running Tools Inside Docker" href="RunningToolsInsideDocker.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -113,6 +113,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Additional Arguments and Parameters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ArrayInputs.html">
+   Array Inputs
   </a>
  </li>
  <li class="toctree-l1">
@@ -237,40 +242,97 @@
 <p>In this example, we will wrap the Java compiler to compile a java source file to a class file. By default, “javac” will create the class files in the same directory as the source file. However, CWL input files (and the directories in which they appear) may be read-only, so we need to instruct “javac” to write the class file to the designated output directory instead.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>% snippet add
-cwlVersion: v1.0
-class: CommandLineTool
-id: 
-label: Example trivial wrapper for Java 9 compiler
-hints:
-  DockerRequirement:
-    dockerPull: openjdk:9.0.1-11-slim
-baseCommand: javac
-arguments: [&quot;-d&quot;, $(runtime.outdir)]
-inputs:
-  src:
-    type: File
-    inputBinding:
-      position: 1
-outputs:
-  classfile:
-    type: File
-    outputBinding:
-      glob: &quot;*.class&quot;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">snippet</span> <span class="n">add</span>
+<span class="n">cwlVersion</span><span class="p">:</span> <span class="n">v1</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">class</span><span class="p">:</span> <span class="n">CommandLineTool</span>
+<span class="nb">id</span><span class="p">:</span> <span class="n">args</span><span class="o">-</span><span class="n">demo</span><span class="o">-</span><span class="n">tool</span>
+<span class="n">label</span><span class="p">:</span> <span class="n">Example</span> <span class="n">trivial</span> <span class="n">wrapper</span> <span class="k">for</span> <span class="n">Java</span> <span class="mi">9</span> <span class="n">compiler</span>
+<span class="n">hints</span><span class="p">:</span>
+  <span class="n">DockerRequirement</span><span class="p">:</span>
+    <span class="n">dockerPull</span><span class="p">:</span> <span class="n">openjdk</span><span class="p">:</span><span class="mf">9.0</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="n">slim</span>
+<span class="n">baseCommand</span><span class="p">:</span> <span class="n">javac</span>
+<span class="n">inputs</span><span class="p">:</span>
+  <span class="n">src</span><span class="p">:</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">File</span>
+    <span class="n">inputBinding</span><span class="p">:</span>
+      <span class="n">position</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">outputs</span><span class="p">:</span>
+  <span class="n">classfile</span><span class="p">:</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">File</span>
+    <span class="n">outputBinding</span><span class="p">:</span>
+      <span class="n">glob</span><span class="p">:</span> <span class="s2">&quot;*.class&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;cwlVersion&quot;: &quot;v1.0&quot;, &quot;class&quot;: &quot;CommandLineTool&quot;, &quot;id&quot;: null, &quot;label&quot;: &quot;Example trivial wrapper for Java 9 compiler&quot;, &quot;hints&quot;: {&quot;DockerRequirement&quot;: {&quot;dockerPull&quot;: &quot;openjdk:9.0.1-11-slim&quot;}}, &quot;baseCommand&quot;: &quot;javac&quot;, &quot;arguments&quot;: [&quot;-d&quot;, &quot;$(runtime.outdir)&quot;], &quot;inputs&quot;: {&quot;src&quot;: {&quot;type&quot;: &quot;File&quot;, &quot;inputBinding&quot;: {&quot;position&quot;: 1}}}, &quot;outputs&quot;: {&quot;classfile&quot;: {&quot;type&quot;: &quot;File&quot;, &quot;outputBinding&quot;: {&quot;glob&quot;: &quot;*.class&quot;}}}}
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;cwlVersion&quot;: &quot;v1.0&quot;, &quot;class&quot;: &quot;CommandLineTool&quot;, &quot;id&quot;: &quot;args-demo-tool&quot;, &quot;label&quot;: &quot;Example trivial wrapper for Java 9 compiler&quot;, &quot;hints&quot;: {&quot;DockerRequirement&quot;: {&quot;dockerPull&quot;: &quot;openjdk:9.0.1-11-slim&quot;}}, &quot;baseCommand&quot;: &quot;javac&quot;, &quot;inputs&quot;: {&quot;src&quot;: {&quot;type&quot;: &quot;File&quot;, &quot;inputBinding&quot;: {&quot;position&quot;: 1}}}, &quot;outputs&quot;: {&quot;classfile&quot;: {&quot;type&quot;: &quot;File&quot;, &quot;outputBinding&quot;: {&quot;glob&quot;: &quot;*.class&quot;}}}}
 </pre></div>
 </div>
 </div>
 </div>
+<p>Here we use the <code class="docutils literal notranslate"><span class="pre">arguments</span></code> field to add an additional argument to the command line that isn’t tied to a specific input parameter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>% snippet build
+arguments: [&quot;-d&quot;, $(runtime.outdir)]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;cwlVersion&quot;: &quot;v1.0&quot;, &quot;class&quot;: &quot;CommandLineTool&quot;, &quot;id&quot;: &quot;args-demo-tool&quot;, &quot;label&quot;: &quot;Example trivial wrapper for Java 9 compiler&quot;, &quot;hints&quot;: {&quot;DockerRequirement&quot;: {&quot;dockerPull&quot;: &quot;openjdk:9.0.1-11-slim&quot;}}, &quot;baseCommand&quot;: &quot;javac&quot;, &quot;inputs&quot;: {&quot;src&quot;: {&quot;type&quot;: &quot;File&quot;, &quot;inputBinding&quot;: {&quot;position&quot;: 1}}}, &quot;outputs&quot;: {&quot;classfile&quot;: {&quot;type&quot;: &quot;File&quot;, &quot;outputBinding&quot;: {&quot;glob&quot;: &quot;*.class&quot;}}}, &quot;arguments&quot;: [&quot;-d&quot;, &quot;$(runtime.outdir)&quot;]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">system</span> <span class="n">echo</span> <span class="s2">&quot;public class Hello </span><span class="si">{}</span><span class="s2">&quot;</span> <span class="o">&gt;</span> <span class="n">Hello</span><span class="o">.</span><span class="n">java</span>
+<span class="n">ls</span> <span class="o">-</span><span class="n">la</span>
+<span class="n">cat</span> <span class="n">Hello</span><span class="o">.</span><span class="n">java</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>total 8
+drwxr-xr-x  3 dks  wheel   96 Jul 29 17:42 .
+drwxr-xr-x  7 dks  wheel  224 Jul 29 17:40 ..
+-rw-r--r--  1 dks  wheel   22 Jul 29 17:43 Hello.java
+public class Hello {}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">execute</span> <span class="n">args</span><span class="o">-</span><span class="n">demo</span><span class="o">-</span><span class="n">tool</span>
+<span class="n">src</span><span class="p">:</span>
+  <span class="n">class</span><span class="p">:</span> <span class="n">File</span>
+  <span class="n">location</span><span class="p">:</span> <span class="n">Hello</span><span class="o">.</span><span class="n">java</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Add data in memory
+</pre></div>
+</div>
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;classfile&quot;: {&quot;location&quot;: &quot;file:///private/tmp/CWLKERNEL_DATA/5e0fbfbc-58bf-4408-8c66-483fcb4ad7a6/runtime_data/Hello.class&quot;, &quot;basename&quot;: &quot;Hello.class&quot;, &quot;nameroot&quot;: &quot;Hello&quot;, &quot;nameext&quot;: &quot;.class&quot;, &quot;class&quot;: &quot;File&quot;, &quot;checksum&quot;: &quot;sha1$fdb876b40ad9ebc7fee873212e02d5940588642e&quot;, &quot;size&quot;: 184, &quot;http://commonwl.org/cwltool#generation&quot;: 0, &quot;_produced_by&quot;: &quot;args-demo-tool&quot;, &quot;id&quot;: &quot;classfile&quot;, &quot;result_counter&quot;: 0}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>This example references a runtime parameter.  Runtime parameters provide
+information about the hardware or software environment when the tool is
+actually executed.  The <code class="docutils literal notranslate"><span class="pre">$(runtime.outdir)</span></code> parameter is the path to the
+designated output directory.  Other parameters include <code class="docutils literal notranslate"><span class="pre">$(runtime.tmpdir)</span></code>,
+<code class="docutils literal notranslate"><span class="pre">$(runtime.ram)</span></code>, <code class="docutils literal notranslate"><span class="pre">$(runtime.cores)</span></code>, <code class="docutils literal notranslate"><span class="pre">$(runtime.outdirSize)</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">$(runtime.tmpdirSize)</span></code>.  See the <a class="reference external" href="https://www.commonwl.org/v1.0/CommandLineTool.html#Runtime_environment">Runtime Environment</a> section of the
+CWL specification for details.</p>
 <div class="container" style="background: #81c784; border-radius: 12px; padding: 8px">
     <h2 style="padding: 0px; margin-top: 0px">Key Points</h2>
     <ul>
-        <li>Containers can help to simplify management of the software requirements of a tool.</li>
-        <li>Specify a Docker image for a tool with DockerRequirement in the hints section.</li>
+        <li>"Use the `arguments` section to describe command line options that do not correspond exactly to input parameters."</li>
+        <li>"Runtime parameters provide information about the environment when the tool is actually executed."</li>
+        <li>"Runtime parameters are referred under the `runtime` namespace."</li>
     </ul>
 </div></div>
 
@@ -284,7 +346,7 @@ outputs:
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="RunningToolsInsideDocker.html" title="previous page">Running Tools Inside Docker</a>
-    <a class='right-next' id="next-link" href="zbib.html" title="next page">Bibliography</a>
+    <a class='right-next' id="next-link" href="ArrayInputs.html" title="next page">Array Inputs</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
