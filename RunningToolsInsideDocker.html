@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Running Tools Inside Docker &#8212; CWL User Guide [Work in progress...]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Additional Arguments and Parameters" href="AdditionalArgumentsAndParameters.html" />
+    <link rel="prev" title="Parameter References" href="Parameter References.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">CWL User Guide [Work in progress...]</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Before Start.html">
+   Pre-tutorial
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="First Example.html">
+   First Example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Essential Input Parameters.html">
+   Essential Input Parameters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Returning Output Files.html">
+   Returning Output Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Staging Input Files.html">
+   Staging Input Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Capturing Standard Output.html">
+   Capturing Standard Output
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Parameter References.html">
+   Parameter References
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Running Tools Inside Docker
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="AdditionalArgumentsAndParameters.html">
+   Additional Arguments and Parameters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zbib.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/RunningToolsInsideDocker.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/giannisdoukas/CWLKernel-Demo/master?urlpath=tree/book/RunningToolsInsideDocker.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="running-tools-inside-docker">
+<h1><a class="reference external" href="https://www.commonwl.org/user_guide/07-containers/index.html">Running Tools Inside Docker</a><a class="headerlink" href="#running-tools-inside-docker" title="Permalink to this headline">¶</a></h1>
+<div class="container" style="background: #80deea; border-radius: 12px; padding: 8px; margin-bottom: 8px;">
+    <h2 style="padding: 0px; margin-top: 0px">Overview</h2>
+    <ul>
+        <li><b>Teaching:</b> 10 min</li>
+        <li><b>Exercises:</b> 0 min</li>
+    </ul>
+    <h3 style="padding: 0px; margin-top: 0px">Questions</h3>
+    <ul>
+        <li>"How do I run tools inside a Docker container?"</li>
+    </ul>
+    <h3 style="padding: 0px; margin-top: 0px">Objectives</h3>
+    <ul>
+        <li>"Learn how to invoke tools inside a complete controlled runtime."</li>
+    </ul>
+</div><p><a class="reference external" href="https://www.docker.com/">Docker</a> containers simplify software installation by providing a complete known-good runtime for software and its dependencies. However, containers are also purposefully isolated from the host system, so in order to run a tool inside a Docker container there is additional work to ensure that input files are available inside the container and output files can be recovered from the container. A CWL runner can perform this work automatically, allowing you to use Docker to simplify your software management while avoiding the complexity of invoking and managing Docker containers.</p>
+<p>One of the responsibilities of the CWL runner is to adjust the paths of input files to reflect the location where they appear inside the container.</p>
+<p>This example runs a simple Node.js script inside a Docker container which will then print “Hello World” to the standard output.</p>
+<p>To begin with we define the input and the output of the CommandLineTool as we have already explained in the previous tutorials.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">snippet</span> <span class="n">add</span>
+<span class="n">cwlVersion</span><span class="p">:</span> <span class="n">v1</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">class</span><span class="p">:</span> <span class="n">CommandLineTool</span>
+<span class="nb">id</span><span class="p">:</span> <span class="n">docker</span><span class="o">-</span><span class="n">example</span>
+<span class="n">inputs</span><span class="p">:</span>
+  <span class="n">src</span><span class="p">:</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">File</span>
+    <span class="n">inputBinding</span><span class="p">:</span>
+      <span class="n">position</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">outputs</span><span class="p">:</span>
+  <span class="n">example_out</span><span class="p">:</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">stdout</span>
+<span class="n">stdout</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;cwlVersion&quot;: &quot;v1.0&quot;, &quot;class&quot;: &quot;CommandLineTool&quot;, &quot;id&quot;: &quot;docker-example&quot;, &quot;inputs&quot;: {&quot;src&quot;: {&quot;type&quot;: &quot;File&quot;, &quot;inputBinding&quot;: {&quot;position&quot;: 1}}}, &quot;outputs&quot;: {&quot;example_out&quot;: {&quot;type&quot;: &quot;stdout&quot;}}, &quot;stdout&quot;: &quot;output.txt&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we want to say to use a docker image for the execution of the baseCommand. <code class="docutils literal notranslate"><span class="pre">baseCommand:</span> <span class="pre">node</span></code> tells CWL that we will be running this command in a container. We
+then need to specify some <code class="docutils literal notranslate"><span class="pre">hints</span></code> for how to find the container we want.  In this case we list
+just our requirements for the docker container in <code class="docutils literal notranslate"><span class="pre">DockerRequirements</span></code>.  The <code class="docutils literal notranslate"><span class="pre">dockerPull:</span></code>
+parameter takes the same value that you would pass to a <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span></code> command. That is,
+the name of the container image (you can even specify the tag, which is good idea for
+best practises when using containers for reproducible research). In this case we have
+used a container called <code class="docutils literal notranslate"><span class="pre">node:slim</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">snippet</span> <span class="n">build</span>
+<span class="n">baseCommand</span><span class="p">:</span> <span class="n">node</span>
+<span class="n">hints</span><span class="p">:</span>
+  <span class="n">DockerRequirement</span><span class="p">:</span>
+    <span class="n">dockerPull</span><span class="p">:</span> <span class="n">node</span><span class="p">:</span><span class="n">slim</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;cwlVersion&quot;: &quot;v1.0&quot;, &quot;class&quot;: &quot;CommandLineTool&quot;, &quot;id&quot;: &quot;docker-example&quot;, &quot;inputs&quot;: {&quot;src&quot;: {&quot;type&quot;: &quot;File&quot;, &quot;inputBinding&quot;: {&quot;position&quot;: 1}}}, &quot;outputs&quot;: {&quot;example_out&quot;: {&quot;type&quot;: &quot;stdout&quot;}}, &quot;stdout&quot;: &quot;output.txt&quot;, &quot;baseCommand&quot;: &quot;node&quot;, &quot;hints&quot;: {&quot;DockerRequirement&quot;: {&quot;dockerPull&quot;: &quot;node:slim&quot;}}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Provide a “hello.js” and use the <code class="docutils literal notranslate"><span class="pre">%</span> <span class="pre">execute</span></code> magic command providing the tool wrapper and the input object on the command line:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">system</span> <span class="n">echo</span> <span class="s2">&quot;console.log(</span><span class="se">\&quot;</span><span class="s2">Hello World</span><span class="se">\&quot;</span><span class="s2">);&quot;</span> <span class="o">&gt;</span> <span class="n">hello</span><span class="o">.</span><span class="n">js</span>
+<span class="n">ls</span> <span class="o">-</span><span class="n">la</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>total 8
+drwxr-xr-x  3 dks  wheel   96 Jul 29 12:05 .
+drwxr-xr-x  7 dks  wheel  224 Jul 29 12:05 ..
+-rw-r--r--  1 dks  wheel   28 Jul 29 12:05 hello.js
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">execute</span> <span class="n">docker</span><span class="o">-</span><span class="n">example</span>
+<span class="n">src</span><span class="p">:</span>
+  <span class="n">class</span><span class="p">:</span> <span class="n">File</span>
+  <span class="n">location</span><span class="p">:</span> <span class="n">hello</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Add data in memory
+</pre></div>
+</div>
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;example_out&quot;: {&quot;location&quot;: &quot;file:///private/tmp/CWLKERNEL_DATA/33e4676e-7dad-4708-bb8f-94d8cfe41d0c/runtime_data/output.txt&quot;, &quot;basename&quot;: &quot;output.txt&quot;, &quot;nameroot&quot;: &quot;output&quot;, &quot;nameext&quot;: &quot;.txt&quot;, &quot;class&quot;: &quot;File&quot;, &quot;checksum&quot;: &quot;sha1$648a6a6ffffdaa0badb23b8baf90b6168dd16b3a&quot;, &quot;size&quot;: 12, &quot;http://commonwl.org/cwltool#generation&quot;: 0, &quot;_produced_by&quot;: &quot;docker-example&quot;, &quot;id&quot;: &quot;example_out&quot;, &quot;result_counter&quot;: 0}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">data</span> <span class="n">example_out</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ul>
+	<li><a href="file:///private/tmp/CWLKERNEL_DATA/33e4676e-7dad-4708-bb8f-94d8cfe41d0c/results/18ff9dfe-24e6-4c51-9cea-835efd793dc7/output.txt" target="_empty">/private/tmp/CWLKERNEL_DATA/33e4676e-7dad-4708-bb8f-94d8cfe41d0c/results/18ff9dfe-24e6-4c51-9cea-835efd793dc7/output.txt</a></li>
+</ul></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">displayData</span> <span class="n">example_out</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Hello World
+</pre></div>
+</div>
+</div>
+</div>
+<div class="container" style="background: #81c784; border-radius: 12px; padding: 8px">
+    <h2 style="padding: 0px; margin-top: 0px">Key Points</h2>
+    <ul>
+        <li>Containers can help to simplify management of the software requirements of a tool.</li>
+        <li>Specify a Docker image for a tool with DockerRequirement in the hints section.</li>
+    </ul>
+</div></div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="Parameter References.html" title="previous page">Parameter References</a>
+    <a class='right-next' id="next-link" href="AdditionalArgumentsAndParameters.html" title="next page">Additional Arguments and Parameters</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
