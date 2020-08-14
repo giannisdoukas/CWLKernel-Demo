@@ -91,11 +91,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Staging Input Files.html">
-   Staging Input Files
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="Capturing Standard Output.html">
    Capturing Standard Output
   </a>
@@ -229,20 +224,21 @@
                 
   <div class="section" id="parameter-references">
 <h1><a class="reference external" href="https://www.commonwl.org/user_guide/06-params/index.html">Parameter References</a><a class="headerlink" href="#parameter-references" title="Permalink to this headline">¶</a></h1>
-<div class="admonition-overview admonition">
-<p class="admonition-title">Overview</p>
-<p><strong>Teaching</strong>: 10 min</p>
-<p><strong>Exercises</strong>: 0 min</p>
-<p><strong>Questions</strong></p>
-<ul class="simple">
-<li><p>How can I re-use parameter values in another location?</p></li>
-</ul>
-<p><strong>Objectives</strong></p>
-<ul class="simple">
-<li><p>Learn how to make parameter references in descriptions.</p></li>
-</ul>
-</div>
-<p>In a previous example, we extracted a file using the “tar” program. However, that example was very limited because it assumed that the file we were interested in was called “hello.txt”, and this was written into the <code class="docutils literal notranslate"><span class="pre">.cwl</span></code> file. This is not the best way to do this, as the “hello.txt” filename may vary or be dependant on the input file(s) used. To avoid this we can specify the name of the file we want in the job parameters file (<code class="docutils literal notranslate"><span class="pre">.yml</span></code>). In this example, you will see how to reference the value of input parameters dynamically from other fields, which will allow us to then specify the name of the file to extract.</p>
+<div class="container" style="background: #80deea44; border-radius: 12px; padding: 8px; margin-bottom: 8px;">
+    <h2 style="padding: 0px; margin-top: 0px">Overview</h2>
+    <ul>
+        <li><b>Teaching:</b> 10 min</li>
+        <li><b>Exercises:</b> 0 min</li>
+    </ul>
+    <h3 style="padding: 0px; margin-top: 0px">Questions</h3>
+    <ul>
+        <li>"How can I re-use parameter values in another location?"</li>
+    </ul>
+    <h3 style="padding: 0px; margin-top: 0px">Objectives</h3>
+    <ul>
+        <li>"Learn how to make parameter references in descriptions."</li>
+    </ul>
+</div><p>In a previous example, we extracted a file using the “tar” program. However, that example was very limited because it assumed that the file we were interested in was called “hello.txt”, and this was written into the <code class="docutils literal notranslate"><span class="pre">.cwl</span></code> file. This is not the best way to do this, as the “hello.txt” filename may vary or be dependant on the input file(s) used. To avoid this we can specify the name of the file we want in the job parameters file (<code class="docutils literal notranslate"><span class="pre">.yml</span></code>). In this example, you will see how to reference the value of input parameters dynamically from other fields, which will allow us to then specify the name of the file to extract.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">snippet</span> <span class="n">add</span>
@@ -439,14 +435,13 @@ outputs:
 </li>
 </ul>
 </div>
-<div class="admonition-key-points admonition">
-<p class="admonition-title">Key Points</p>
-<ul class="simple">
-<li><p>Some fields permit parameter references enclosed in $(…).</p></li>
-<li><p>References are written using a subset of Javascript syntax.</p></li>
-</ul>
-</div>
-</div>
+<div class="container" style="background: #81c78444; border-radius: 12px; padding: 8px">
+    <h2 style="padding: 0px; margin-top: 0px">Key Points</h2>
+    <ul>
+        <li>"Some fields permit parameter references enclosed in <code>$(...)</code>."</li>
+        <li>"References are written using a subset of Javascript syntax."</li>
+    </ul>
+</div></div>
 
 
               </div>

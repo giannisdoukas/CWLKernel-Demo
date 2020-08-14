@@ -91,11 +91,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Staging Input Files.html">
-   Staging Input Files
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="Capturing Standard Output.html">
    Capturing Standard Output
   </a>
@@ -222,20 +217,21 @@
                 
   <div class="section" id="first-example">
 <h1><a class="reference external" href="https://www.commonwl.org/user_guide/02-1st-example/index.html">First Example</a><a class="headerlink" href="#first-example" title="Permalink to this headline">¶</a></h1>
-<div class="admonition-overview admonition">
-<p class="admonition-title">Overview</p>
-<p><strong>Teaching</strong>: 5 min</p>
-<p><strong>Exercises</strong>: 0 min</p>
-<p><strong>Questions</strong></p>
-<ul class="simple">
-<li><p>How do I write a CWL description of a simple command line tool?</p></li>
-</ul>
-<p><strong>Objectives</strong></p>
-<ul class="simple">
-<li><p>Learn the basic structure of a CWL description.</p></li>
-</ul>
-</div>
-<p>The simplest “hello world” program. This accepts one input parameter, writes a message to the terminal or job log, and produces no permanent output. CWL documents are written in <a class="reference external" href="https://www.json.org/">JSON</a> or <a class="reference external" href="https://yaml.org/">YAML</a>, or a mix of the two. We will use YAML throughout this guide. If you are not familiar with YAML, you may find it helpful to refer to <a class="reference external" href="https://www.commonwl.org/user_guide/yaml/">this quick tutorial for the subset of YAML used in CWL</a>.</p>
+<div class="container" style="background: #80deea44; border-radius: 12px; padding: 8px; margin-bottom: 8px;">
+    <h2 style="padding: 0px; margin-top: 0px">Overview</h2>
+    <ul>
+        <li><b>Teaching:</b> 5 min</li>
+        <li><b>Exercises:</b> 0 min</li>
+    </ul>
+    <h3 style="padding: 0px; margin-top: 0px">Questions</h3>
+    <ul>
+        <li>"How do I write a CWL description of a simple command line tool?"</li>
+    </ul>
+    <h3 style="padding: 0px; margin-top: 0px">Objectives</h3>
+    <ul>
+        <li>"Learn the basic structure of a CWL description."</li>
+    </ul>
+</div><p>The simplest “hello world” program. This accepts one input parameter, writes a message to the terminal or job log, and produces no permanent output. CWL documents are written in <a class="reference external" href="https://www.json.org/">JSON</a> or <a class="reference external" href="https://yaml.org/">YAML</a>, or a mix of the two. We will use YAML throughout this guide. If you are not familiar with YAML, you may find it helpful to refer to <a class="reference external" href="https://www.commonwl.org/user_guide/yaml/">this quick tutorial for the subset of YAML used in CWL</a>.</p>
 <p>First, create a tool called 1st-tool.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -355,15 +351,16 @@ message: Hello World!
 </pre></div>
 </div>
 <p>This tool has no formal output, so the <code class="docutils literal notranslate"><span class="pre">outputs</span></code> section is an empty list.</p>
-<div class="admonition-key-points admonition">
-<p class="admonition-title">Key Points</p>
-<p>CWL documents are written in YAML and/or JSON.</p>
-<p>The command called is specified with baseCommand.</p>
-<p>Each expected input is described in the inputs section.</p>
-<p>Input values are specified in a separate YAML file.</p>
-<p>The tool description and input files are provided as arguments to a CWL runner.</p>
-</div>
-</div>
+<div class="container" style="background: #81c78444; border-radius: 12px; padding: 8px">
+    <h2 style="padding: 0px; margin-top: 0px">Key Points</h2>
+    <ul>
+        <li>"CWL documents are written in YAML and/or JSON."</li>
+        <li>"The command called is specified with baseCommand."</li>
+        <li>"Each expected input is described in the inputs section."</li>
+        <li>"Input values are specified in a separate YAML file."</li>
+        <li>"The tool description and input files are provided as arguments to a CWL runner."</li>
+    </ul>
+</div></div>
 
 
               </div>
