@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Parameter References &#8212; CWL User Guide [Work in progress...]</title>
+    <title>Parameter References &#8212; CWL User Guide</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -51,7 +51,7 @@
 <a class="navbar-brand text-wrap" href="index.html">
   
   
-  <h1 class="site-logo" id="site-title">CWL User Guide [Work in progress...]</h1>
+  <h1 class="site-logo" id="site-title">CWL User Guide</h1>
   
 </a>
 </div>
@@ -211,6 +211,101 @@
   <a class="reference internal nav-link" href="#where-are-parameter-references-allowed">
    Where are parameter references allowed?
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-commandlinetool">
+     From
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       CommandLineTool
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#from-commandinputparameter">
+       From CommandInputParameter
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#from-commandoutputparamater">
+       From CommandOutputParamater
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-workflow">
+     From
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Workflow
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#from-inputparameter-and-workflowoutputparameter">
+       From InputParameter and WorkflowOutputParameter
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-expressiontool">
+     From
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ExpressionTool
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#from-inputparameter-and-expressiontooloutputparameter">
+       From InputParameter and ExpressionToolOutputParameter
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-resourcerequirement">
+     From
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ResourceRequirement
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-initialworkdirrequirement">
+     From
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       InitialWorkDirRequirement
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-envvarrequirement">
+     From
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EnvVarRequirement
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#from-environmentdef">
+       From EnvironmentDef
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -335,9 +430,9 @@ outputs:
 <div class="section" id="where-are-parameter-references-allowed">
 <h2>Where are parameter references allowed?<a class="headerlink" href="#where-are-parameter-references-allowed" title="Permalink to this headline">¶</a></h2>
 <p>You can only use parameter references in certain fields.  These are:</p>
+<div class="section" id="from-commandlinetool">
+<h3>From <code class="docutils literal notranslate"><span class="pre">CommandLineTool</span></code><a class="headerlink" href="#from-commandlinetool" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>From <a class="reference external" href="http://www.commonwl.org/v1.0/CommandLineTool.html#CommandLineTool"><code class="docutils literal notranslate"><span class="pre">CommandLineTool</span></code></a></p>
-<ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">arguments</span></code></p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">valueFrom</span></code></p></li>
@@ -346,8 +441,10 @@ outputs:
 <li><p><code class="docutils literal notranslate"><span class="pre">stdin</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">stdout</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">stderr</span></code></p></li>
-<li><p>From <a class="reference external" href="http://www.commonwl.org/v1.0/CommandLineTool.html#CommandInputParameter">CommandInputParameter</a></p>
-<ul>
+</ul>
+<div class="section" id="from-commandinputparameter">
+<h4>From <a class="reference external" href="http://www.commonwl.org/v1.0/CommandLineTool.html#CommandInputParameter">CommandInputParameter</a><a class="headerlink" href="#from-commandinputparameter" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">format</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">secondaryFiles</span></code></p></li>
 <li><p>From <a class="reference external" href="http://www.commonwl.org/v1.0/CommandLineTool.html#CommandLineBinding"><code class="docutils literal notranslate"><span class="pre">inputBinding</span></code></a></p>
@@ -356,9 +453,10 @@ outputs:
 </ul>
 </li>
 </ul>
-</li>
-<li><p>From <a class="reference external" href="http://www.commonwl.org/v1.0/CommandLineTool.html#CommandOutputParameter">CommandOutputParamater</a></p>
-<ul>
+</div>
+<div class="section" id="from-commandoutputparamater">
+<h4>From <a class="reference external" href="http://www.commonwl.org/v1.0/CommandLineTool.html#CommandOutputParameter">CommandOutputParamater</a><a class="headerlink" href="#from-commandoutputparamater" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">format</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">secondaryFiles</span></code></p></li>
 <li><p>From <a class="reference external" href="http://www.commonwl.org/v1.0/CommandLineTool.html#CommandOutputBinding">CommandOutputBinding</a></p>
@@ -368,13 +466,13 @@ outputs:
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>From <code class="docutils literal notranslate"><span class="pre">Workflow</span></code></p>
-<ul>
-<li><p>From <a class="reference external" href="http://www.commonwl.org/v1.0/Workflow.html#InputParameter">InputParameter</a> and <a class="reference external" href="http://www.commonwl.org/v1.0/Workflow.html#WorkflowOutputParameter">WorkflowOutputParameter</a></p>
-<ul>
+</div>
+</div>
+<div class="section" id="from-workflow">
+<h3>From <code class="docutils literal notranslate"><span class="pre">Workflow</span></code><a class="headerlink" href="#from-workflow" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="from-inputparameter-and-workflowoutputparameter">
+<h4>From <a class="reference external" href="http://www.commonwl.org/v1.0/Workflow.html#InputParameter">InputParameter</a> and <a class="reference external" href="http://www.commonwl.org/v1.0/Workflow.html#WorkflowOutputParameter">WorkflowOutputParameter</a><a class="headerlink" href="#from-inputparameter-and-workflowoutputparameter" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">format</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">secondaryFiles</span></code></p></li>
 <li><p>From <code class="docutils literal notranslate"><span class="pre">steps</span></code></p>
@@ -387,22 +485,24 @@ outputs:
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>From <a class="reference external" href="https://www.commonwl.org/v1.0/Workflow.html#ExpressionTool">ExpressionTool</a></p>
-<ul>
+</div>
+</div>
+<div class="section" id="from-expressiontool">
+<h3>From <code class="docutils literal notranslate"><span class="pre">ExpressionTool</span></code><a class="headerlink" href="#from-expressiontool" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">expression</span></code></p></li>
-<li><p>From <a class="reference external" href="http://www.commonwl.org/v1.0/Workflow.html#InputParameter">InputParameter</a> and <a class="reference external" href="http://www.commonwl.org/v1.0/Workflow.html#ExpressionToolOutputParameter">ExpressionToolOutputParameter</a></p>
-<ul>
+</ul>
+<div class="section" id="from-inputparameter-and-expressiontooloutputparameter">
+<h4>From <a class="reference external" href="http://www.commonwl.org/v1.0/Workflow.html#InputParameter">InputParameter</a> and <a class="reference external" href="http://www.commonwl.org/v1.0/Workflow.html#ExpressionToolOutputParameter">ExpressionToolOutputParameter</a><a class="headerlink" href="#from-inputparameter-and-expressiontooloutputparameter" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">format</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">secondaryFiles</span></code></p></li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>From <a class="reference external" href="http://www.commonwl.org/v1.0/CommandLineTool.html#ResourceRequirement"><code class="docutils literal notranslate"><span class="pre">ResourceRequirement</span></code></a></p>
-<ul>
+</div>
+</div>
+<div class="section" id="from-resourcerequirement">
+<h3>From <code class="docutils literal notranslate"><span class="pre">ResourceRequirement</span></code><a class="headerlink" href="#from-resourcerequirement" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">coresMin</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">coresMax</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ramMin</span></code></p></li>
@@ -412,9 +512,10 @@ outputs:
 <li><p><code class="docutils literal notranslate"><span class="pre">outdirMin</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">outdirMax</span></code></p></li>
 </ul>
-</li>
-<li><p>From <a class="reference external" href="http://www.commonwl.org/v1.0/CommandLineTool.html#InitialWorkDirRequirement"><code class="docutils literal notranslate"><span class="pre">InitialWorkDirRequirement</span></code></a></p>
-<ul>
+</div>
+<div class="section" id="from-initialworkdirrequirement">
+<h3>From <code class="docutils literal notranslate"><span class="pre">InitialWorkDirRequirement</span></code><a class="headerlink" href="#from-initialworkdirrequirement" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">listing</span></code></p></li>
 <li><p>in <a class="reference external" href="http://www.commonwl.org/v1.0/CommandLineTool.html#Dirent">Dirent</a></p>
 <ul>
@@ -423,17 +524,16 @@ outputs:
 </ul>
 </li>
 </ul>
-</li>
-<li><p>From <code class="docutils literal notranslate"><span class="pre">EnvVarRequirement</span></code></p>
-<ul>
-<li><p>From <a class="reference external" href="http://www.commonwl.org/v1.0/CommandLineTool.html#EnvironmentDef">EnvironmentDef</a></p>
-<ul>
+</div>
+<div class="section" id="from-envvarrequirement">
+<h3>From <code class="docutils literal notranslate"><span class="pre">EnvVarRequirement</span></code><a class="headerlink" href="#from-envvarrequirement" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="from-environmentdef">
+<h4>From <a class="reference external" href="http://www.commonwl.org/v1.0/CommandLineTool.html#EnvironmentDef">EnvironmentDef</a><a class="headerlink" href="#from-environmentdef" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">envValue</span></code></p></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
+</div>
+</div>
 </div>
 <div class="container" style="background: #81c78444; border-radius: 12px; padding: 8px">
     <h2 style="padding: 0px; margin-top: 0px">Key Points</h2>
