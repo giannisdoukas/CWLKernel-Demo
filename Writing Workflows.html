@@ -1,0 +1,535 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Writing Workflows &#8212; CWL User Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Bibliography" href="zbib.html" />
+    <link rel="prev" title="Array Inputs" href="ArrayInputs.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">CWL User Guide</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Before Start.html">
+   Pre-tutorial
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="First Example.html">
+   First Example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Essential Input Parameters.html">
+   Essential Input Parameters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Returning Output Files.html">
+   Returning Output Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Capturing Standard Output.html">
+   Capturing Standard Output
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Parameter References.html">
+   Parameter References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="RunningToolsInsideDocker.html">
+   Running Tools Inside Docker
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="AdditionalArgumentsAndParameters.html">
+   Additional Arguments and Parameters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ArrayInputs.html">
+   Array Inputs
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Writing Workflows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zbib.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Writing Workflows.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/giannisdoukas/CWLKernel-Demo/master?urlpath=tree/book/Writing Workflows.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="writing-workflows">
+<h1><a class="reference external" href="https://www.commonwl.org/user_guide/21-1st-workflow/index.html">Writing Workflows</a><a class="headerlink" href="#writing-workflows" title="Permalink to this headline">¶</a></h1>
+<div class="container" style="background: #80deea44; border-radius: 12px; padding: 8px; margin-bottom: 8px;">
+    <h2 style="padding: 0px; margin-top: 0px">Overview</h2>
+    <ul>
+        <li><b>Teaching:</b> 10 min</li>
+        <li><b>Exercises:</b> 0 min</li>
+    </ul>
+    <h3 style="padding: 0px; margin-top: 0px">Questions</h3>
+    <ul>
+        <li>"How do I connect tools together into a workflow?"</li>
+    </ul>
+    <h3 style="padding: 0px; margin-top: 0px">Objectives</h3>
+    <ul>
+        <li>"Learn how to construct workflows from multiple CWL tool descriptions."</li>
+    </ul>
+</div><p>This workflow extracts a java source file from a tar file and then compiles it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cwlVersion: v1.0
+class: CommandLineTool
+id: tar-param
+baseCommand: [tar, --extract]
+inputs:
+  tarfile:
+    type: File
+    inputBinding:
+      prefix: --file
+  extractfile:
+    type: string
+    inputBinding:
+      position: 1
+outputs:
+  extracted_file:
+    type: File
+    outputBinding:
+      glob: $(inputs.extractfile)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>tool &#39;tar-param&#39; registered
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cwlVersion: v1.0
+class: CommandLineTool
+id: arguments
+label: Example trivial wrapper for Java 9 compiler
+hints:
+  DockerRequirement:
+    dockerPull: openjdk:9.0.1-11-slim
+baseCommand: javac
+arguments: [&quot;-d&quot;, $(runtime.outdir)]
+inputs:
+  src:
+    type: File
+    inputBinding:
+      position: 1
+outputs:
+  classfile:
+    type: File
+    outputBinding:
+      glob: &quot;*.class&quot;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>tool &#39;arguments&#39; registered
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">snippet</span> <span class="n">add</span>
+<span class="n">cwlVersion</span><span class="p">:</span> <span class="n">v1</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">class</span><span class="p">:</span> <span class="n">Workflow</span>
+<span class="nb">id</span><span class="p">:</span> <span class="mi">1</span><span class="n">st</span><span class="o">-</span><span class="n">workflow</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;cwlVersion&quot;: &quot;v1.0&quot;, &quot;class&quot;: &quot;Workflow&quot;, &quot;id&quot;: &quot;1st-workflow&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">cwlVersion</span></code> field indicates the version of the CWL spec used by the document. The <code class="docutils literal notranslate"><span class="pre">class</span></code> field indicates this document describes a workflow.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">snippet</span> <span class="n">add</span>
+<span class="n">inputs</span><span class="p">:</span>
+  <span class="n">tarball</span><span class="p">:</span> 
+    <span class="nb">type</span><span class="p">:</span> <span class="n">File</span>
+  <span class="n">name_of_file_to_extract</span><span class="p">:</span> 
+    <span class="nb">type</span><span class="p">:</span> <span class="n">string</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;cwlVersion&quot;: &quot;v1.0&quot;, &quot;class&quot;: &quot;Workflow&quot;, &quot;id&quot;: &quot;1st-workflow&quot;, &quot;inputs&quot;: {&quot;tarball&quot;: {&quot;type&quot;: &quot;File&quot;}, &quot;name_of_file_to_extract&quot;: {&quot;type&quot;: &quot;string&quot;}}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">inputs</span></code> section describes the inputs of the workflow. This is a list of input parameters where each parameter consists of an identifier and a data type. These parameters can be used as sources for input to specific workflows steps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">snippet</span> <span class="n">add</span>
+<span class="n">outputs</span><span class="p">:</span>
+  <span class="n">compiled_class</span><span class="p">:</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">File</span>
+    <span class="n">outputSource</span><span class="p">:</span> <span class="nb">compile</span><span class="o">/</span><span class="n">classfile</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;cwlVersion&quot;: &quot;v1.0&quot;, &quot;class&quot;: &quot;Workflow&quot;, &quot;id&quot;: &quot;1st-workflow&quot;, &quot;inputs&quot;: {&quot;tarball&quot;: {&quot;type&quot;: &quot;File&quot;}, &quot;name_of_file_to_extract&quot;: {&quot;type&quot;: &quot;string&quot;}}, &quot;outputs&quot;: {&quot;compiled_class&quot;: {&quot;type&quot;: &quot;File&quot;, &quot;outputSource&quot;: &quot;compile/classfile&quot;}}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">outputs</span></code> section describes the outputs of the workflow. This is a list of output parameters where each parameter consists of an identifier and a data type. The <code class="docutils literal notranslate"><span class="pre">outputSource</span></code> connects the output parameter <code class="docutils literal notranslate"><span class="pre">classfile</span></code> of the <code class="docutils literal notranslate"><span class="pre">compile</span></code> step to the workflow output parameter <code class="docutils literal notranslate"><span class="pre">compiled_class</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">snippet</span> <span class="n">add</span>
+<span class="n">steps</span><span class="p">:</span>
+  <span class="n">untar</span><span class="p">:</span>
+    <span class="n">run</span><span class="p">:</span> <span class="n">tar</span><span class="o">-</span><span class="n">param</span><span class="o">.</span><span class="n">cwl</span>
+    <span class="ow">in</span><span class="p">:</span>
+      <span class="n">tarfile</span><span class="p">:</span> <span class="n">tarball</span>
+      <span class="n">extractfile</span><span class="p">:</span> <span class="n">name_of_file_to_extract</span>
+    <span class="n">out</span><span class="p">:</span> <span class="p">[</span><span class="n">extracted_file</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;cwlVersion&quot;: &quot;v1.0&quot;, &quot;class&quot;: &quot;Workflow&quot;, &quot;id&quot;: &quot;1st-workflow&quot;, &quot;inputs&quot;: {&quot;tarball&quot;: {&quot;type&quot;: &quot;File&quot;}, &quot;name_of_file_to_extract&quot;: {&quot;type&quot;: &quot;string&quot;}}, &quot;outputs&quot;: {&quot;compiled_class&quot;: {&quot;type&quot;: &quot;File&quot;, &quot;outputSource&quot;: &quot;compile/classfile&quot;}}, &quot;steps&quot;: {&quot;untar&quot;: {&quot;run&quot;: &quot;tar-param.cwl&quot;, &quot;in&quot;: {&quot;tarfile&quot;: &quot;tarball&quot;, &quot;extractfile&quot;: &quot;name_of_file_to_extract&quot;}, &quot;out&quot;: [&quot;extracted_file&quot;]}}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">steps</span></code> section describes the actual steps of the workflow. In this example, the first step extracts a file from a tar file, and the second step compiles the file from the first step using the java compiler. Workflow steps are not necessarily run in the order they are listed, instead the order is determined by the dependencies between steps (using <code class="docutils literal notranslate"><span class="pre">source</span></code>). In addition, workflow steps which do not depend on one another may run in parallel.</p>
+<p>The first step, <code class="docutils literal notranslate"><span class="pre">untar</span></code> runs <code class="docutils literal notranslate"><span class="pre">tar-param.cwl</span></code> (described previously in <a class="reference internal" href="Parameter References.html"><span class="doc std std-doc">Parameter references</span></a>. This tool has two input parameters, <code class="docutils literal notranslate"><span class="pre">tarfile</span></code> and <code class="docutils literal notranslate"><span class="pre">extractfile</span></code> and one output parameter <code class="docutils literal notranslate"><span class="pre">extracted_file</span></code>.</p>
+<p>The in section of the workflow step connects these two input parameters to the inputs of the workflow, <code class="docutils literal notranslate"><span class="pre">tarball</span></code> and <code class="docutils literal notranslate"><span class="pre">name_of_file_to_extract</span></code> using <code class="docutils literal notranslate"><span class="pre">source</span></code>. This means that when the workflow step is executed, the values assigned to <code class="docutils literal notranslate"><span class="pre">tarball</span></code> and <code class="docutils literal notranslate"><span class="pre">name_of_file_to_extract</span></code> will be used for the parameters <code class="docutils literal notranslate"><span class="pre">tarfile</span></code> and <code class="docutils literal notranslate"><span class="pre">extractfile</span></code> in order to run the tool.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">out</span></code> section of the workflow step lists the output parameters that are expected from the tool.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">snippet</span> <span class="n">build</span>
+  <span class="nb">compile</span><span class="p">:</span>
+    <span class="n">run</span><span class="p">:</span> <span class="n">arguments</span><span class="o">.</span><span class="n">cwl</span>
+    <span class="ow">in</span><span class="p">:</span>
+      <span class="n">src</span><span class="p">:</span> <span class="n">untar</span><span class="o">/</span><span class="n">extracted_file</span>
+    <span class="n">out</span><span class="p">:</span> <span class="p">[</span><span class="n">classfile</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;cwlVersion&quot;: &quot;v1.0&quot;, &quot;class&quot;: &quot;Workflow&quot;, &quot;id&quot;: &quot;1st-workflow&quot;, &quot;inputs&quot;: {&quot;tarball&quot;: {&quot;type&quot;: &quot;File&quot;}, &quot;name_of_file_to_extract&quot;: {&quot;type&quot;: &quot;string&quot;}}, &quot;outputs&quot;: {&quot;compiled_class&quot;: {&quot;type&quot;: &quot;File&quot;, &quot;outputSource&quot;: &quot;compile/classfile&quot;}}, &quot;steps&quot;: {&quot;untar&quot;: {&quot;run&quot;: &quot;tar-param.cwl&quot;, &quot;in&quot;: {&quot;tarfile&quot;: &quot;tarball&quot;, &quot;extractfile&quot;: &quot;name_of_file_to_extract&quot;}, &quot;out&quot;: [&quot;extracted_file&quot;]}, &quot;compile&quot;: {&quot;run&quot;: &quot;arguments.cwl&quot;, &quot;in&quot;: {&quot;src&quot;: &quot;untar/extracted_file&quot;}, &quot;out&quot;: [&quot;classfile&quot;]}}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>The second step <code class="docutils literal notranslate"><span class="pre">compile</span></code> depends on the results from the first step by connecting the input parameter <code class="docutils literal notranslate"><span class="pre">src</span></code> to the output parameter of <code class="docutils literal notranslate"><span class="pre">untar</span></code> using <code class="docutils literal notranslate"><span class="pre">untar/extracted_file</span></code>. The output of this step <code class="docutils literal notranslate"><span class="pre">classfile</span></code> is connected to the <code class="docutils literal notranslate"><span class="pre">outputs</span></code> section for the Workflow, described above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">view</span> <span class="mi">1</span><span class="n">st</span><span class="o">-</span><span class="n">workflow</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="max-width: 100%;"><svg xmlns="http://www.w3.org/2000/svg" width="459pt" height="320pt" viewBox="0.00 0.00 459.01 320.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 316)">
+<title>G</title>
+<polygon fill="#eeeeee" stroke="transparent" points="-4,4 -4,-316 455.01,-316 455.01,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_inputs</title>
+<polygon fill="#eeeeee" stroke="black" stroke-dasharray="5,2" points="47.01,-229 47.01,-304 443.01,-304 443.01,-229 47.01,-229"></polygon>
+<text text-anchor="middle" x="387.93" y="-235.8" font-family="Times,serif" font-size="14.00">Workflow Inputs</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_outputs</title>
+<polygon fill="#eeeeee" stroke="black" stroke-dasharray="5,2" points="34.01,-8 34.01,-83 230.01,-83 230.01,-8 34.01,-8"></polygon>
+<text text-anchor="middle" x="170.26" y="-14.8" font-family="Times,serif" font-size="14.00">Workflow Outputs</text>
+</g>
+
+<g id="node1" class="node">
+<title>file:///private/tmp/CWLKERNEL_DATA/535aa2ca-8967-40dc-95ac-ede9f3f16515/repo/1st-workflow.cwl#1st-workflow/untar</title>
+<polygon fill="lightgoldenrodyellow" stroke="black" points="70.35,-184.5 70.35,-220.5 193.67,-220.5 193.67,-184.5 70.35,-184.5"></polygon>
+<text text-anchor="middle" x="132.01" y="-198.3" font-family="Times,serif" font-size="14.00">1st-workflow/untar</text>
+</g>
+
+<g id="node2" class="node">
+<title>file:///private/tmp/CWLKERNEL_DATA/535aa2ca-8967-40dc-95ac-ede9f3f16515/repo/1st-workflow.cwl#1st-workflow/compile</title>
+<polygon fill="lightgoldenrodyellow" stroke="black" points="0,-111.5 0,-147.5 264.01,-147.5 264.01,-111.5 0,-111.5"></polygon>
+<text text-anchor="middle" x="132.01" y="-125.3" font-family="Times,serif" font-size="14.00">Example trivial wrapper for Java 9 compiler</text>
+</g>
+
+<g id="edge1" class="edge">
+<title>file:///private/tmp/CWLKERNEL_DATA/535aa2ca-8967-40dc-95ac-ede9f3f16515/repo/1st-workflow.cwl#1st-workflow/untar-&gt;file:///private/tmp/CWLKERNEL_DATA/535aa2ca-8967-40dc-95ac-ede9f3f16515/repo/1st-workflow.cwl#1st-workflow/compile</title>
+<path fill="none" stroke="black" d="M132.01,-184.31C132.01,-176.29 132.01,-166.55 132.01,-157.57"></path>
+<polygon fill="black" stroke="black" points="135.51,-157.53 132.01,-147.53 128.51,-157.53 135.51,-157.53"></polygon>
+</g>
+
+<g id="node5" class="node">
+<title>file:///private/tmp/CWLKERNEL_DATA/535aa2ca-8967-40dc-95ac-ede9f3f16515/repo/1st-workflow.cwl#1st-workflow/compiled_class</title>
+<polygon fill="#94ddf4" stroke="black" points="41.57,-38.5 41.57,-74.5 222.44,-74.5 222.44,-38.5 41.57,-38.5"></polygon>
+<text text-anchor="middle" x="132.01" y="-52.3" font-family="Times,serif" font-size="14.00">1st-workflow/compiled_class</text>
+</g>
+
+<g id="edge4" class="edge">
+<title>file:///private/tmp/CWLKERNEL_DATA/535aa2ca-8967-40dc-95ac-ede9f3f16515/repo/1st-workflow.cwl#1st-workflow/compile-&gt;file:///private/tmp/CWLKERNEL_DATA/535aa2ca-8967-40dc-95ac-ede9f3f16515/repo/1st-workflow.cwl#1st-workflow/compiled_class</title>
+<path fill="none" stroke="black" d="M132.01,-111.31C132.01,-103.29 132.01,-93.55 132.01,-84.57"></path>
+<polygon fill="black" stroke="black" points="135.51,-84.53 132.01,-74.53 128.51,-84.53 135.51,-84.53"></polygon>
+</g>
+
+<g id="node3" class="node">
+<title>file:///private/tmp/CWLKERNEL_DATA/535aa2ca-8967-40dc-95ac-ede9f3f16515/repo/1st-workflow.cwl#1st-workflow/name_of_file_to_extract</title>
+<polygon fill="#94ddf4" stroke="black" points="203.31,-259.5 203.31,-295.5 434.71,-295.5 434.71,-259.5 203.31,-259.5"></polygon>
+<text text-anchor="middle" x="319.01" y="-273.3" font-family="Times,serif" font-size="14.00">1st-workflow/name_of_file_to_extract</text>
+</g>
+
+<g id="edge2" class="edge">
+<title>file:///private/tmp/CWLKERNEL_DATA/535aa2ca-8967-40dc-95ac-ede9f3f16515/repo/1st-workflow.cwl#1st-workflow/name_of_file_to_extract-&gt;file:///private/tmp/CWLKERNEL_DATA/535aa2ca-8967-40dc-95ac-ede9f3f16515/repo/1st-workflow.cwl#1st-workflow/untar</title>
+<path fill="none" stroke="black" d="M275.16,-259.38C248.2,-248.86 213.48,-235.3 184.98,-224.18"></path>
+<polygon fill="black" stroke="black" points="186.16,-220.88 175.58,-220.51 183.62,-227.4 186.16,-220.88"></polygon>
+</g>
+
+<g id="node4" class="node">
+<title>file:///private/tmp/CWLKERNEL_DATA/535aa2ca-8967-40dc-95ac-ede9f3f16515/repo/1st-workflow.cwl#1st-workflow/tarball</title>
+<polygon fill="#94ddf4" stroke="black" points="54.85,-259.5 54.85,-295.5 185.17,-295.5 185.17,-259.5 54.85,-259.5"></polygon>
+<text text-anchor="middle" x="120.01" y="-273.3" font-family="Times,serif" font-size="14.00">1st-workflow/tarball</text>
+</g>
+
+<g id="edge3" class="edge">
+<title>file:///private/tmp/CWLKERNEL_DATA/535aa2ca-8967-40dc-95ac-ede9f3f16515/repo/1st-workflow.cwl#1st-workflow/tarball-&gt;file:///private/tmp/CWLKERNEL_DATA/535aa2ca-8967-40dc-95ac-ede9f3f16515/repo/1st-workflow.cwl#1st-workflow/untar</title>
+<path fill="none" stroke="black" d="M122.85,-259.2C124.26,-250.65 125.98,-240.15 127.56,-230.57"></path>
+<polygon fill="black" stroke="black" points="131.02,-231.11 129.18,-220.68 124.11,-229.98 131.02,-231.11"></polygon>
+</g>
+</g>
+</svg></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">system</span> <span class="n">echo</span> <span class="s2">&quot;public class Hello </span><span class="si">{}</span><span class="s2">&quot;</span> <span class="o">&gt;</span> <span class="n">Hello</span><span class="o">.</span><span class="n">java</span> <span class="o">&amp;&amp;</span> <span class="n">tar</span> <span class="o">-</span><span class="n">cvf</span> <span class="n">hello</span><span class="o">.</span><span class="n">tar</span> <span class="n">Hello</span><span class="o">.</span><span class="n">java</span>
+<span class="o">%</span> <span class="n">execute</span> <span class="mi">1</span><span class="n">st</span><span class="o">-</span><span class="n">workflow</span>
+<span class="n">tarball</span><span class="p">:</span>
+  <span class="n">class</span><span class="p">:</span> <span class="n">File</span>
+  <span class="n">location</span><span class="p">:</span> <span class="n">hello</span><span class="o">.</span><span class="n">tar</span>
+<span class="n">name_of_file_to_extract</span><span class="p">:</span> <span class="n">Hello</span><span class="o">.</span><span class="n">java</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">a Hello.java
+</pre>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Add data in memory
+</pre></div>
+</div>
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&quot;compiled_class&quot;: {&quot;location&quot;: &quot;file:///private/tmp/CWLKERNEL_DATA/535aa2ca-8967-40dc-95ac-ede9f3f16515/runtime_data/Hello.class&quot;, &quot;basename&quot;: &quot;Hello.class&quot;, &quot;nameroot&quot;: &quot;Hello&quot;, &quot;nameext&quot;: &quot;.class&quot;, &quot;class&quot;: &quot;File&quot;, &quot;checksum&quot;: &quot;sha1$fdb876b40ad9ebc7fee873212e02d5940588642e&quot;, &quot;size&quot;: 184, &quot;http://commonwl.org/cwltool#generation&quot;: 0, &quot;_produced_by&quot;: &quot;1st-workflow&quot;, &quot;id&quot;: &quot;compiled_class&quot;, &quot;result_counter&quot;: 0}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="container" style="background: #81c78444; border-radius: 12px; padding: 8px">
+    <h2 style="padding: 0px; margin-top: 0px">Key Points</h2>
+    <ul>
+        <li>"Each step in a workflow must have its own CWL description."</li>
+        <li>"Top level <code>inputs</code> and <code>outputs</code> of the workflow are described in the inputs and outputs fields respectively."</li>
+        <li>"The steps are specified under <code>steps</code>."</li>
+        <li>"Execution order is determined by the connections between steps."</li>
+    </ul>
+</div></div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="ArrayInputs.html" title="previous page">Array Inputs</a>
+    <a class='right-next' id="next-link" href="zbib.html" title="next page">Bibliography</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
