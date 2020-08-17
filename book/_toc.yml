@@ -9,4 +9,5 @@ sections:
 - file: RunningToolsInsideDocker
 - file: AdditionalArgumentsAndParameters
 - file: ArrayInputs
+- file: Writing Workflows
 - file: zbib
